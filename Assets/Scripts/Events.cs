@@ -17,4 +17,8 @@ public class Events : MonoBehaviour
     {
         Application.Quit();
     }
+    public void About()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

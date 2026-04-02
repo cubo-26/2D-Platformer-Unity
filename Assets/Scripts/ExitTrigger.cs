@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ExitTrigger : MonoBehaviour
 {
+    [SerializeField] AudioClip completeLevel;
     //public Animator anim;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,5 +25,7 @@ public class ExitTrigger : MonoBehaviour
         yield return new WaitForSeconds(2f);
         // Do something after flag anim
         GameManager.instance.LevelComplete();
+
+        AudioSource.PlayClipAtPoint(completeLevel, transform.position);
     }
 }

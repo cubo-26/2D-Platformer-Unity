@@ -8,6 +8,7 @@ public class pickup : MonoBehaviour
 
     public pickupType pt;
     [SerializeField] GameObject PickupEffect;
+    [SerializeField] AudioClip coinPickupSFX;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +17,8 @@ public class pickup : MonoBehaviour
             if(collision.gameObject.tag == "Player")
             {
                 GameManager.instance.IncrementCoinCount();
-           
+                AudioSource.PlayClipAtPoint(coinPickupSFX, transform.position);
+
                 Instantiate(PickupEffect, transform.position, Quaternion.identity);
 
                 Destroy(this.gameObject,0.2f);
